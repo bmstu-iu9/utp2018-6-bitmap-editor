@@ -71,4 +71,8 @@ class Canvas {
 		this.clickedX = pos[0];
 		this.clickedY = pos[1];
 	}
+
+	get drawContext() {
+		return this.context;
+	}
 }
