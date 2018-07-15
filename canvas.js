@@ -51,4 +51,20 @@ class Canvas {
 	makeSecond() {
 		this.element.style.zIndex = "1";
 	}
+
+	set color(colorStr) {
+		this.context.strokeStyle = colorStr;
+	}
+
+	setColorRGB(r, g, b) {
+		this.color = "rgb(" + r + "," + g + "," + b + ")";
+	}
+
+	setColorRGBA(r, g, b, a) {
+		this.color = "rgba(" + r + "," + g + "," + b + "," + a + ")";
+	}
+
+	set lineWidth(w) {
+		this.context.lineWidth = w;
+	}
 }
