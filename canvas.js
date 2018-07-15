@@ -62,4 +62,13 @@ class Canvas {
 	set lineWidth(w) {
 		this.context.lineWidth = w;
 	}
+
+	get currentStartPosition() {       // дабы не нарушать инкапсуляцию
+		return [this.clickedX, this.clickedY];
+	}
+
+	set currentStartPosition(pos) {    // будет нужно для кисточки
+		this.clickedX = pos[0];
+		this.clickedY = pos[1];
+	}
 }
