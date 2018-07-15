@@ -1,8 +1,6 @@
 'use strict';
 
 class Button {
-	element;
-
 	constructor(element) {
 		this.element = element;
 	}
@@ -18,10 +16,6 @@ class Button {
 }
 
 class ToolButton extends Button {
-	drawer;
-	front;
-	back;
-
 	constructor(element, drawer, frontCanvas, backCanvas) {
 		super(element);
 		this.drawer = drawer;
@@ -34,6 +28,6 @@ class ToolButton extends Button {
 		this.putBorder();
 		this.front.makeFirst();
 		this.back.makeSecond();
-		this.front.drawer = drawer;
+		this.front.drawer = this.drawer;
 	}
 }
