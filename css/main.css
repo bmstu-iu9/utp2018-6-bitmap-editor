@@ -40,7 +40,26 @@ header h1 {
 
 .tool h2 {
     color: #757575;
+    text-align: center;
 }
+
+.instruments {
+    width: 140px;
+    display: block;
+}
+
+.figures {
+    width: 106px;
+    display: block;
+}
+
+.instrument {
+    height: 30px;
+    width: 30px;
+    margin: 0 4px;
+    display: inline-block;
+}
+
 /*Оформление канвасов*/
 .canvas_wrapper {
     width: 1280px;
@@ -48,6 +67,7 @@ header h1 {
     margin: 8px;
     background: #FFFFFF;
     position: relative;
+    margin: auto;
     box-shadow: 6px 6px 10px -2px #B0BEC5;
     border: 1px solid #ECEFF1;
 }
