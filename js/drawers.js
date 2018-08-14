@@ -32,6 +32,15 @@ const drawFilledRect = ((canvas, ev) => {
 	context.fillRect(startPos[0], startPos[1], ev.offsetX - startPos[0], ev.offsetY - startPos[1]);
 });
 
+const drawErase = ((canvas, ev) => {
+	const startColor = canvas.color;
+	if (startColor !== '#ffffff') {
+		canvas.color = '#ffffff';
+	}
+	drawPencil(canvas, ev);
+	canvas.color = startColor;
+});
+
 const drawFill = ((canvas, ev) => {
 	const startColor = canvas.getColorByPixel(ev.offsetX, ev.offsetY);
 	const tasks = [];

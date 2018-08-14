@@ -7,6 +7,7 @@ tools.set('pencil', new ToolButton('pencil',drawPencil,front,back));
 tools.set('rect', new ToolButton('rect',drawRect,back,front));
 tools.set('filledRect', new ToolButton('filledRect',drawFilledRect,back,front));
 tools.set('filler', new ToolButton('filler',drawFill,front,back));
+tools.set('eraser',new ToolButton('eraser',drawErase,front,back));
 let currentTool = tools.get('pencil');
 currentTool.click(null);
 tools.forEach((value) => {
