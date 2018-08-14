@@ -1,8 +1,8 @@
 'use strict';
 
 class Button {
-	constructor(element) {
-		this.element = element;
+	constructor(id) {
+		this.element = document.getElementById(id);
 	}
 
 	/*Ставим рамку для выделения нажатой кнопки*/
@@ -20,8 +20,8 @@ class Button {
    он не обязан совпадать с реальным передним слоем(с html)
  */
 class ToolButton extends Button {
-	constructor(element, drawer, frontCanvas, backCanvas) {
-		super(element);
+	constructor(id, drawer, frontCanvas, backCanvas) {
+		super(id);
 		this.drawer = drawer;
 		this.front = frontCanvas;
 		this.back = backCanvas;
@@ -33,5 +33,9 @@ class ToolButton extends Button {
 		this.front.makeFirst();
 		this.back.makeSecond();
 		this.front.drawer = this.drawer;
+	}
+
+	get docElement() {
+		return this.element;
 	}
 }
