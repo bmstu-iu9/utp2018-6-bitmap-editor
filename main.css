@@ -1,0 +1,86 @@
+/* Стили панели интерфейса: панель инструментов, кнопки и тд */
+
+html {
+    font: 14px Arial;
+    height: 100%;
+}
+body {
+    height: 100%;
+    background-color: #E3F2FD;
+}
+
+/*Оформление шапки*/
+header {
+    padding: 6px;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+
+main {
+    position: relative;
+}
+
+header h1 {
+    font-size: 1.2em;
+    color: #424242;
+    font-weight: bolder;
+}
+/*Оформление панели инструментов*/
+.panel {
+    background: linear-gradient(to bottom,#e3e3e4,#f8f7f7 2%,#f8f7f7 98%,#e3e3e4),#f8f7f7;
+    border: 1px solid #E0E0E0;
+    border-left: none;
+    border-right: none;
+}
+
+.tool {
+    float: left;
+    padding: 0 10px 10px 10px;
+}
+
+.tool h2 {
+    color: #757575;
+    text-align: center;
+}
+
+.instruments {
+    width: 140px;
+    display: block;
+}
+
+.figures {
+    width: 106px;
+    display: block;
+}
+
+.instrument {
+    height: 30px;
+    width: 30px;
+    margin: 0 4px;
+    display: inline-block;
+}
+
+/*Оформление канвасов*/
+.canvas_wrapper {
+    width: 1280px;
+    height: 720px;
+    margin: 8px;
+    background: #FFFFFF;
+    position: relative;
+    margin: auto;
+    box-shadow: 6px 6px 10px -2px #B0BEC5;
+    border: 1px solid #ECEFF1;
+}
+
+main canvas {
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.clear {
+    clear: both;
+    width: 0;
+    height: 0;
+}

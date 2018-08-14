@@ -1,15 +1,58 @@
 <!DOCTYPE html>
-<html>
- <head>
-  <title>Растровый графический редактор</title>
-  <meta charset="utf8"/>
- </head>
- <body>
-  <p>
-    Содержимое этого файла HTML будет отображаться на&nbsp;странице
-    <a href="https://bmstu-iu9.github.io/utp2018-6-bitmap-editor">
-      https://bmstu-iu9.github.io/utp2018-6-bitmap-editor
-    </a>
-  </p>
- </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="main.css">
+    <title>Bitmap editor by iu9 students</title>
+</head>
+<body>
+<!--Панель с названием страницы-->
+<header>
+    <h1>Bitmap editor by iu9 students</h1>
+</header>
+<!--Панель инструментов на всю ширину страницы-->
+<div class="panel">
+    <!--Отдел с кнопками для базовых инструментов: карандаш, линия и тд-->
+    <section class="tool">
+        <h2 class="instruments">Инструменты</h2>
+        <div class="instruments">   <!-- по 4 кнопки в ряд -->
+            <button id="pencil" class="instrument">к</button>
+        </div>
+        <div class="instruments">
+
+        </div>
+    </section>
+    <!--Отдел с кнопками для рисования фигур-->
+    <section class="tool">
+        <h2>Фигуры</h2>
+        <div class="figures">  <!-- по 3 кнопки в ряд -->
+            <button id="rect" class="instrument">п</button>
+        </div>
+        <div class="figures">
+            <button id="filledRect" class="instrument">п</button>
+        </div>
+    </section>
+    <!--для выбора толщины линии-->
+    <section class="tool thickness">
+        <h2>Толщина</h2>
+    </section>
+    <!--для палитры-->
+    <section class="tool color">
+        <h2>Цвета</h2>
+    </section>
+    <div class="clear"></div>
+</div>
+<main>
+    <!--Canvas_wrapper для задания отступов-->
+    <div class="canvas_wrapper">
+        <canvas id="front_canvas" width="1280" height="720">
+            Your browser does not support the drawing
+        </canvas>
+        <canvas id="back_canvas" width="1280" height="720">
+
+        </canvas>
+    </div>
+</main>
+</body>
 </html>
