@@ -7,11 +7,11 @@ class Button {
 
 	/*Ставим рамку для выделения нажатой кнопки*/
 	focus() {
-		this.element.classList.add('focusedButton');
+		this.element.classList.add('focused-button');
 	}
 
 	notfocus() {
-		this.element.classList.remove('focusedButton');
+		this.element.classList.remove('focused-button');
 	}
 }
 
