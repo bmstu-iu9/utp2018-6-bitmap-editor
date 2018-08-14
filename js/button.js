@@ -28,7 +28,9 @@ class ToolButton extends Button {
 	}
 
 	click(currentButton) {
-		currentButton.notfocus();
+		if (currentButton !== null) {
+			currentButton.notfocus();
+		}
 		this.focus();
 		this.front.makeFirst();
 		this.back.makeSecond();
