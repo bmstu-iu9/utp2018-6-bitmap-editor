@@ -4,6 +4,7 @@ html {
     font: 14px Arial;
     height: 100%;
 }
+
 body {
     height: 100%;
     background-color: #E3F2FD;
@@ -25,9 +26,10 @@ header h1 {
     color: #424242;
     font-weight: bolder;
 }
+
 /*Оформление панели инструментов*/
 .panel {
-    background: linear-gradient(to bottom,#e3e3e4,#f8f7f7 2%,#f8f7f7 98%,#e3e3e4),#f8f7f7;
+    background: linear-gradient(to bottom, #e3e3e4, #f8f7f7 2%, #f8f7f7 98%, #e3e3e4), #f8f7f7;
     border: 1px solid #E0E0E0;
     border-left: none;
     border-right: none;
@@ -35,39 +37,73 @@ header h1 {
 
 .tool {
     float: left;
-    padding: 0 10px 10px 10px;
+    padding: 10px 10px 2px 10px;
+    position: relative;
+}
+
+.tool::after, .tool:first-child::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 60%;
+    border-right: 1px solid #cccccc;
+    position: absolute;
+    top: 20%;
+}
+
+.tool::after {
+    right: 0;
+}
+
+.tool:first-child::before {
+    left: 0;
+}
+
+.tool:first-child {
+    margin-left: 12px;
 }
 
 .tool h2 {
     color: #757575;
     text-align: center;
+    display: block;
 }
+
+/*Оформление каждой секции инструментов*/
 
 .instruments {
-    width: 140px;
-    display: block;
+    width: 200px;
 }
 
-.figures {
-    width: 106px;
+.instrument-button, .instrument-button img {
     display: block;
+    padding: 0;
+    margin: 0;
+    width: 50px;
+    height: 50px;
 }
 
-.instrument {
-    height: 30px;
-    width: 30px;
-    margin: 0 4px;
-    display: inline-block;
+.instrument-button {
+    float: left;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    background-color: #f8f7f7;
+    box-sizing: border-box;
+}
+
+.instrument-button:hover {
+    border: 1px solid #90CAF9;
+    background-color: #E3F2FD;
 }
 
 /*Оформление канвасов*/
 .canvas_wrapper {
     width: 1280px;
     height: 720px;
-    margin: 8px;
     background: #FFFFFF;
     position: relative;
-    margin: auto;
+    margin: 8px auto;
     box-shadow: 6px 6px 10px -2px #B0BEC5;
     border: 1px solid #ECEFF1;
 }
@@ -83,8 +119,4 @@ main canvas {
     clear: both;
     width: 0;
     height: 0;
-}
-
-.focusedButton {
-    background-color: pink;
 }
