@@ -101,6 +101,11 @@ header h1 {
     margin: 0;
 }
 
+.focusedButton {
+    border: 1px solid #64B5F6;
+    background-color: #BBDEFB;
+}
+
 /*Оформление канвасов*/
 .canvas_wrapper {
     width: 1280px;
@@ -117,6 +122,10 @@ main canvas {
     position: absolute;
     top: 0;
     left: 0;
+}
+
+#back_canvas {
+    color: transparent;
 }
 
 .clear {
