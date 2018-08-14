@@ -55,8 +55,17 @@ class Canvas {
 		this.element.style.zIndex = "1";
 	}
 
+	get color() {
+		return this.context.strokeStyle;
+	}
+
 	set color(colorStr) {
 		this.context.strokeStyle = colorStr;
+		this.context.fillStyle = colorStr;
+	}
+
+	setColorHEX(c) {
+		this.color = c;
 	}
 
 	setColorRGB(r, g, b) {
@@ -71,11 +80,11 @@ class Canvas {
 		this.context.lineWidth = w;
 	}
 
-	get currentStartPosition() {       // дабы не нарушать инкапсуляцию
+	get currentStartPosition() {
 		return [this.clickedX, this.clickedY];
 	}
 
-	set currentStartPosition(pos) {    // будет нужно для кисточки
+	set currentStartPosition(pos) {
 		this.clickedX = pos[0];
 		this.clickedY = pos[1];
 	}

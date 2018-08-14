@@ -3,6 +3,14 @@
 /* для удобства будем начинать названия со слова draw
 *  каждая функция должна принимать 2 аргумента: канвас для рисования и евент клика*/
 
+const parseColor = ((color) => {
+	if (color.length === 4 && color[0] === '#') {
+		return [parseInt(color.substring(1, 2), 16), parseInt(color.substring(2, 3), 16), parseInt(color.substring(3, 4), 16), 1]
+	} else if (color.length === 7 && color[0] === '#') {
+		return [parseInt(color.substring(1, 3), 16), parseInt(color.substring(3, 5), 16), parseInt(color.substring(5, 7), 16), 1]
+	}
+});
+
 const drawPencil = ((canvas, ev) => {
 	const startPos = canvas.currentStartPosition;
 	const context = canvas.drawContext;
