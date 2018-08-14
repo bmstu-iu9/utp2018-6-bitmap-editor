@@ -2,6 +2,7 @@
 
 class Button {
 	constructor(id) {
+		this.idElement = id;
 		this.element = document.getElementById(id);
 	}
 
@@ -12,6 +13,10 @@ class Button {
 
 	notfocus() {
 		this.element.classList.remove('focused-button');
+	}
+
+	get id() {
+		return this.idElement;
 	}
 }
 
@@ -34,10 +39,20 @@ class ToolButton extends Button {
 		this.focus();
 		this.front.makeFirst();
 		this.back.makeSecond();
+		if (this.idElement === 'filler') {
+			this.toggleFiller();
+		}
+		if (currentButton !== null && currentButton.id === 'filler') {
+			currentButton.toggleFiller();
+		}
 		this.front.drawer = this.drawer;
 	}
 
 	get docElement() {
 		return this.element;
+	}
+
+	toggleFiller() {
+		this.front.isFiller = !this.front.isFiller;
 	}
 }

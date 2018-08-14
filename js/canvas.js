@@ -7,11 +7,19 @@ class Canvas {
 	constructor(id, frontCanvas) {
 		this.element = document.getElementById(id);
 		this.context = this.element.getContext('2d');
+		this.filler = false;
 		this.frontCanvas = frontCanvas;
+		this.element.onclick = (ev => {    // особенное для заливки
+			if (this.filler) {
+				this.drawFunction(this, ev);
+			}
+		});
 		this.element.onmousedown = (ev => {
-			this.clicked = true;
-			this.clickedX = ev.offsetX;
-			this.clickedY = ev.offsetY;
+			if (!this.filler) {
+				this.clicked = true;
+				this.clickedX = ev.offsetX;
+				this.clickedY = ev.offsetY;
+			}
 		});
 		this.element.onmousemove = (ev => {
 			if (this.clicked) {
@@ -76,6 +84,15 @@ class Canvas {
 		this.color = "rgba(" + r + "," + g + "," + b + "," + a + ")";
 	}
 
+	getColorByPixel(x,y) {
+		return this.context.getImageData(x,y,1,1).data;
+		// if (data[0]===0 && data[1]===0 && data[2]===0 && data[3]===0) {
+		// 	return [255,255,255,255];
+		// } else {
+		// 	return data;
+		// }
+	}
+
 	set lineWidth(w) {
 		this.context.lineWidth = w;
 	}
@@ -91,5 +108,13 @@ class Canvas {
 
 	get drawContext() {
 		return this.context;
+	}
+
+	get isFiller() {
+		return this.filler;
+	}
+
+	set isFiller(v) {
+		this.filler = v;
 	}
 }
