@@ -51,8 +51,7 @@ const drawFill = ((canvas, ev) => {
 			(c2[0] === 255 && c2[1] === 255 && c2[2] === 255 && c1[3] === 0);
 	});
 	let counter = 0;
-	tasks.push({x: ev.offsetX, y: ev.offsetY, canTop: true, canBottom: true});
-	tasks.push([ev.offsetX, ev.offsetY]);
+	tasks.push({x: ev.offsetX, y: ev.offsetY});
 	while (tasks.length !== 0) {
 		if (counter === 300) {
 			break;
@@ -66,13 +65,13 @@ const drawFill = ((canvas, ev) => {
 		x = ++left;
 		while (x < 1280 && cmpColors(startColor, canvas.getColorByPixel(x, y))) {
 			if (!visitedTop && y > 1 && cmpColors(startColor, canvas.getColorByPixel(x, y - 1))) {
-				tasks.push({x: x, y: y - 1, canTop: true, canBottom: false});
+				tasks.push({x: x, y: y - 1});
 				visitedTop = true;
 			} else if (visitedTop && y > 1 && !cmpColors(startColor, canvas.getColorByPixel(x, y - 1))) {
 				visitedTop = false;
 			}
 			if (!visitedBottom && y < 720 && cmpColors(startColor, canvas.getColorByPixel(x, y + 1))) {
-				tasks.push({x: x, y: y + 1, canTop: false, canBottom: true});
+				tasks.push({x: x, y: y + 1});
 				visitedBottom = true;
 			} else if (visitedBottom && y < 720 && !cmpColors(startColor, canvas.getColorByPixel(x, y + 1))) {
 				visitedBottom = false;
