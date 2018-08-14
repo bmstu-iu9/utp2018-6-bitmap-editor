@@ -15,6 +15,10 @@ class Button {
 	}
 }
 
+
+/* под frontCanvas подразумевается слой, на котором должна рисовать функция.
+   он не обязан совпадать с реальным передним слоем(с html)
+ */
 class ToolButton extends Button {
 	constructor(element, drawer, frontCanvas, backCanvas) {
 		super(element);

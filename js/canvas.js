@@ -18,21 +18,28 @@ class Canvas {
 				/* очистка, необходимая только для заднего канваса. Нужна в ситуациях типа рисования прямоугольника:
 				   нужно отображать, какой прямоугольник получается и при этом стирать старые изображения
 				 */
-				if (this.frontCanvas != null) {
+				if (this.frontCanvas !== null) {
 					this.context.clearRect(0, 0, this.element.offsetWidth, this.element.offsetHeight);
 				}
 				this.drawFunction(this, ev);
 			}
 		});
 		this.element.onmouseup = (ev => {
-			if (this.frontCanvas != null) {
+			if (this.frontCanvas !== null) {
+				this.clicked = false;
 				this.context.clearRect(0, 0, this.element.offsetWidth, this.element.offsetHeight);
 				this.drawFunction(this.frontCanvas, ev);
 			} else {
+				this.clicked = false;
 				this.drawFunction(this, ev);
 			}
 		});
-		this.element.onmouseleave = this.element.onmouseup;
+		this.element.onmouseleave = ((ev) => {
+			if (this.clicked) {
+				this.clicked = false;
+				this.element.onmouseup(ev);
+			}
+		})
 	}
 
 	set drawer(d) {
