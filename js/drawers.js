@@ -16,11 +16,11 @@ const drawPencil = ((canvas, ev) => {
 const drawRect = ((canvas, ev) => {
 	const startPos = canvas.currentStartPosition;
 	const context = canvas.drawContext;
-	context.strokeRect(startPos[0], startPos[1], ev.offsetX, ev.offsetY);
+	context.strokeRect(startPos[0], startPos[1], ev.offsetX - startPos[0], ev.offsetY - startPos[1]);
 });
 
 const drawFilledRect = ((canvas, ev) => {
 	const startPos = canvas.currentStartPosition;
 	const context = canvas.drawContext;
-	context.fillRect(startPos[0], startPos[1], ev.offsetX, ev.offsetY);
+	context.fillRect(startPos[0], startPos[1], ev.offsetX - startPos[0], ev.offsetY - startPos[1]);
 });
