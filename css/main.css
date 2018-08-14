@@ -36,29 +36,35 @@ header h1 {
 .tool {
     float: left;
     padding: 0 10px 10px 10px;
+    position: relative;
+}
+.tool::after, .tool:first-child::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 60%;
+    border-right: 1px solid #cccccc;
+    position: absolute;
+    top: 20%;
 }
 
+.tool::after {
+    right: 0;
+}
+
+.tool:first-child::before{
+    left: 0;
+}
+
+.tool:first-child {
+    margin-left: 12px;
+}
 .tool h2 {
-    color: #757575;
-    text-align: center;
+color: #757575;
+text-align: center;
+display: block;
 }
 
-.instruments {
-    width: 140px;
-    display: block;
-}
-
-.figures {
-    width: 106px;
-    display: block;
-}
-
-.instrument {
-    height: 30px;
-    width: 30px;
-    margin: 0 4px;
-    display: inline-block;
-}
 
 /*Оформление канвасов*/
 .canvas_wrapper {
