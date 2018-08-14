@@ -6,12 +6,12 @@ class Button {
 	}
 
 	/*Ставим рамку для выделения нажатой кнопки*/
-	putBorder() {
-		this.element.style.borderWidth = this.element.offsetWidth / 10 + "px";
+	focus() {
+		this.element.classList.add('focusedButton');
 	}
 
-	removeBorder() {
-		this.element.style.borderWidth = "0";
+	notfocus() {
+		this.element.classList.remove('focusedButton');
 	}
 }
 
@@ -24,8 +24,8 @@ class ToolButton extends Button {
 	}
 
 	click(currentButton) {
-		currentButton.removeBorder();
-		this.putBorder();
+		currentButton.notfocus();
+		this.focus();
 		this.front.makeFirst();
 		this.back.makeSecond();
 		this.front.drawer = this.drawer;

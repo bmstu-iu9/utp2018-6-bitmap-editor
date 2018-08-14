@@ -84,3 +84,7 @@ main canvas {
     width: 0;
     height: 0;
 }
+
+.focusedButton {
+    background-color: #424242;
+}
