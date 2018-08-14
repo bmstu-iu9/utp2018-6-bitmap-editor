@@ -28,6 +28,7 @@ class Canvas {
 			if (this.frontCanvas !== null) {
 				this.clicked = false;
 				this.context.clearRect(0, 0, this.element.offsetWidth, this.element.offsetHeight);
+				this.frontCanvas.currentStartPosition = this.currentStartPosition;
 				this.drawFunction(this.frontCanvas, ev);
 			} else {
 				this.clicked = false;
