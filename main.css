@@ -48,6 +48,11 @@ header h1 {
     display: block;
 }
 
+.figures {
+    width: 106px;
+    display: block;
+}
+
 .instrument {
     height: 30px;
     width: 30px;
