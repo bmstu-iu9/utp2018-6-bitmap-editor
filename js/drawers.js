@@ -1,6 +1,9 @@
 'use strict';
 
-const brush = ((canvas, ev) => {
+/* для удобства будем начинать названия со слова draw
+*  каждая функция должна принимать 2 аргумента: канвас для рисования и евент клика*/
+
+const drawPencil = ((canvas, ev) => {
 	const startPos = canvas.currentStartPosition;
 	const context = canvas.drawContext;
 	context.beginPath();
@@ -10,13 +13,13 @@ const brush = ((canvas, ev) => {
 	canvas.currentStartPosition = [ev.offsetX, ev.offsetY];
 });
 
-const rect = ((canvas, ev) => {
+const drawRect = ((canvas, ev) => {
 	const startPos = canvas.currentStartPosition;
 	const context = canvas.drawContext;
 	context.strokeRect(startPos[0], startPos[1], ev.offsetX, ev.offsetY);
 });
 
-const filledRect = ((canvas, ev) => {
+const drawFilledRect = ((canvas, ev) => {
 	const startPos = canvas.currentStartPosition;
 	const context = canvas.drawContext;
 	context.fillRect(startPos[0], startPos[1], ev.offsetX, ev.offsetY);
