@@ -3,6 +3,8 @@
 /* для удобства будем начинать названия со слова draw
 *  каждая функция должна принимать 2 аргумента: канвас для рисования и евент клика*/
 
+let filling = false;
+
 const parseColor = ((color) => {
 	if (color.length === 4 && color[0] === '#') {
 		return [parseInt(color.substring(1, 2), 16), parseInt(color.substring(2, 3), 16), parseInt(color.substring(3, 4), 16), 1]
@@ -42,6 +44,11 @@ const drawErase = ((canvas, ev) => {
 });
 
 const drawFill = ((canvas, ev) => {
+	if (filling) {   // много заливок сразу - нехорошо
+		return;
+	} else {
+		filling = true;
+	}
 	const startColor = canvas.getColorByPixel(ev.offsetX, ev.offsetY);
 	const tasks = [];
 	const context = canvas.drawContext;
@@ -50,13 +57,8 @@ const drawFill = ((canvas, ev) => {
 			(c1[0] === 255 && c1[1] === 255 && c1[2] === 255 && c2[3] === 0) ||         //canvas любит шуточки с нулевым a (из rgba)
 			(c2[0] === 255 && c2[1] === 255 && c2[2] === 255 && c1[3] === 0);
 	});
-	let counter = 0;
 	tasks.push({x: ev.offsetX, y: ev.offsetY});
 	while (tasks.length !== 0) {
-		if (counter === 300) {
-			break;
-		}
-		counter++;
 		const currentPoint = tasks.pop(), y = currentPoint.y;
 		let left = currentPoint.x, x, visitedTop = false, visitedBottom = false;
 		while (left >= 1 && cmpColors(startColor, canvas.getColorByPixel(left, y))) {
@@ -80,4 +82,5 @@ const drawFill = ((canvas, ev) => {
 		}
 		context.fillRect(left, y, x - left, 1);
 	}
+	filling = false;
 });

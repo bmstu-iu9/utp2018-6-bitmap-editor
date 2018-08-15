@@ -22,7 +22,7 @@ class Canvas {
 			}
 		});
 		this.element.onmousemove = (ev => {
-			if (this.clicked) {
+			if (this.clicked && !this.filler) {
 				/* очистка, необходимая только для заднего канваса. Нужна в ситуациях типа рисования прямоугольника:
 				   нужно отображать, какой прямоугольник получается и при этом стирать старые изображения
 				 */
@@ -33,18 +33,20 @@ class Canvas {
 			}
 		});
 		this.element.onmouseup = (ev => {
-			if (this.frontCanvas !== null) {
-				this.clicked = false;
-				this.context.clearRect(0, 0, this.element.offsetWidth, this.element.offsetHeight);
-				this.frontCanvas.currentStartPosition = this.currentStartPosition;
-				this.drawFunction(this.frontCanvas, ev);
-			} else {
-				this.clicked = false;
-				this.drawFunction(this, ev);
+			if (!this.filler) {
+				if (this.frontCanvas !== null) {
+					this.clicked = false;
+					this.context.clearRect(0, 0, this.element.offsetWidth, this.element.offsetHeight);
+					this.frontCanvas.currentStartPosition = this.currentStartPosition;
+					this.drawFunction(this.frontCanvas, ev);
+				} else {
+					this.clicked = false;
+					this.drawFunction(this, ev);
+				}
 			}
 		});
 		this.element.onmouseleave = ((ev) => {
-			if (this.clicked) {
+			if (this.clicked && !this.filler) {
 				this.clicked = false;
 				this.element.onmouseup(ev);
 			}
