@@ -86,13 +86,8 @@ class Canvas {
 		this.color = "rgba(" + r + "," + g + "," + b + "," + a + ")";
 	}
 
-	getColorByPixel(x,y) {
-		return this.context.getImageData(x,y,1,1).data;
-		// if (data[0]===0 && data[1]===0 && data[2]===0 && data[3]===0) {
-		// 	return [255,255,255,255];
-		// } else {
-		// 	return data;
-		// }
+	get canvasData() {
+		return this.context.getImageData(0,0,1280,720).data;
 	}
 
 	set lineWidth(w) {
