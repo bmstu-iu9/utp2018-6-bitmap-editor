@@ -51,10 +51,19 @@ class Canvas {
 				this.element.onmouseup(ev);
 			}
 		})
+		if (frontCanvas === null){
+			this.context.fillStyle = '#FFFFFF';
+			this.context.fillRect(0,0,1280,720);
+			this.context.fillStyle = '#000000';
+		}
 	}
 
 	set drawer(d) {
 		this.drawFunction = d;
+	}
+
+	get docElement() {
+		return this.element;
 	}
 
 	makeFirst() {

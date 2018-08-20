@@ -16,3 +16,11 @@ tools.forEach((value) => {
 		currentTool = value;
 	})
 });
+
+function getImage(){
+	const canv = front.element;
+	// canv.style.backgroundColor = 'red';
+	var image = canv.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
+	window.location.href = image; // it will save locally
+}
+
