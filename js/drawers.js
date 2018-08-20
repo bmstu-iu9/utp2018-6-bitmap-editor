@@ -72,7 +72,11 @@ const drawFill = ((canvas, ev) => {
 			} else if (visitedBottom && y < 720 && !cmpColor(x, y + 1)) {
 				visitedBottom = false;
 			}
-			data[x * 4 + y * 4 * 1280] += 1;
+			if (data[x * 4 + y * 4 * 1280] === 255) {
+				data[x * 4 + y * 4 * 1280] -= 1;
+			} else {
+				data[x * 4 + y * 4 * 1280] += 1;
+			}
 			x++;
 		}
 		context.fillRect(left, y, x - left, 1);
