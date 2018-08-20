@@ -40,7 +40,20 @@ const drawErase = ((canvas, ev) => {
 	drawPencil(canvas, ev);
 	canvas.color = startColor;
 });
-
+const drawCircle = ((canvas, ev) => {
+	const startPos = canvas.currentStartPosition;
+	const context = canvas.drawContext;
+	context.beginPath();
+	context.arc(startPos[0], startPos[1], Math.abs((ev.offsetX - startPos[0])), 0 ,2*Math.PI, false);
+	context.stroke();
+});
+const drawFillCircle = ((canvas, ev) => {
+	const startPos = canvas.currentStartPosition;
+	const context = canvas.drawContext;
+	context.beginPath();
+	context.arc(startPos[0], startPos[1], Math.abs((ev.offsetX - startPos[0])), 0 ,2*Math.PI, false);
+	context.fill();
+});
 const drawFill = ((canvas, ev) => {
 	const tasks = [];
 	const context = canvas.drawContext;
