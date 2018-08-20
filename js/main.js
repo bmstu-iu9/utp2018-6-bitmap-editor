@@ -8,6 +8,8 @@ tools.set('rect', new ToolButton('rect',drawRect,back,front));
 tools.set('filledRect', new ToolButton('filledRect',drawFilledRect,back,front));
 tools.set('filler', new ToolButton('filler',drawFill,front,back));
 tools.set('eraser',new ToolButton('eraser',drawErase,front,back));
+tools.set('circle',new ToolButton('circle',drawCircle,back,front));
+tools.set('filledCircle',new ToolButton('filledCircle',drawFillCircle,back,front));
 let currentTool = tools.get('pencil');
 currentTool.click(null);
 tools.forEach((value) => {
