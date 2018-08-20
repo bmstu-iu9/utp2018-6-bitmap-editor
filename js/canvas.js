@@ -50,7 +50,7 @@ class Canvas {
 				this.element.onmouseup(ev);
                 this.clicked = false;
 			}
-		})
+		});
 		if (frontCanvas === null){
 			this.context.fillStyle = '#FFFFFF';
 			this.context.fillRect(0,0,1280,720);
