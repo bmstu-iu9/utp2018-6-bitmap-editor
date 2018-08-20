@@ -146,3 +146,16 @@ main canvas {
     width: 0;
     height: 0;
 }
+
+.left {
+    float: right;
+    margin: 10px;
+    width: 75px;
+    height: 35px;
+}
+.left:hover{
+    background-color: #90CAF9;
+}
+.left:active{
+    margin: 10px;
+}
