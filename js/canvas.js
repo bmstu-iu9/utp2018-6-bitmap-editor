@@ -33,7 +33,7 @@ class Canvas {
 			}
 		});
 		this.element.onmouseup = (ev => {
-			if (!this.filler) {
+			if (!this.filler && this.clicked) {
 				if (this.frontCanvas !== null) {
 					this.clicked = false;
 					this.context.clearRect(0, 0, this.element.offsetWidth, this.element.offsetHeight);
@@ -47,8 +47,8 @@ class Canvas {
 		});
 		this.element.onmouseleave = ((ev) => {
 			if (this.clicked && !this.filler) {
-				this.clicked = false;
 				this.element.onmouseup(ev);
+                this.clicked = false;
 			}
 		})
 	}
