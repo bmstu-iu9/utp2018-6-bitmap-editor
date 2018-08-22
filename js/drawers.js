@@ -3,6 +3,10 @@
 /* для удобства будем начинать названия со слова draw
 *  каждая функция должна принимать 2 аргумента: канвас для рисования и евент клика*/
 
+//Начальный цвет и обычной линии и заливки - черный
+var Color = '#000000';
+var ColorPour = '#000000';
+
 const parseColor = ((color) => {
 	if (color.length === 4 && color[0] === '#') {
 		return [parseInt(color.substring(1, 2), 16), parseInt(color.substring(2, 3), 16), parseInt(color.substring(3, 4), 16), 1]
@@ -11,6 +15,14 @@ const parseColor = ((color) => {
 	}
 });
 
+function colorStroke(context, color){
+    context.strokeStyle = color;
+}
+
+function colorFill(context, color){
+    context.fillStyle = color;
+}
+
 const drawPencil = ((canvas, ev) => {
 	const startPos = canvas.currentStartPosition;
 	const context = canvas.drawContext;
@@ -18,17 +30,22 @@ const drawPencil = ((canvas, ev) => {
 	context.moveTo(startPos[0], startPos[1]);
 	context.lineTo(ev.offsetX, ev.offsetY);
 	context.stroke();
+    colorStroke(context,this.Color);
 	canvas.currentStartPosition = [ev.offsetX, ev.offsetY];
 });
 const drawRect = ((canvas, ev) => {
 	const startPos = canvas.currentStartPosition;
 	const context = canvas.drawContext;
+    colorStroke(context,this.Color);
 	context.strokeRect(startPos[0], startPos[1], ev.offsetX - startPos[0], ev.offsetY - startPos[1]);
 });
 
 const drawFilledRect = ((canvas, ev) => {
 	const startPos = canvas.currentStartPosition;
 	const context = canvas.drawContext;
+    colorStroke(context,this.Color);// цвет контура вокруг прямоугольника
+    context.strokeRect(startPos[0], startPos[1], ev.offsetX - startPos[0], ev.offsetY - startPos[1]); // вокруг прямоугольника обводится контур
+    colorFill(context,this.ColorPour);
 	context.fillRect(startPos[0], startPos[1], ev.offsetX - startPos[0], ev.offsetY - startPos[1]);
 });
 
@@ -43,6 +60,7 @@ const drawErase = ((canvas, ev) => {
 const drawCircle = ((canvas, ev) => {
 	const startPos = canvas.currentStartPosition;
 	const context = canvas.drawContext;
+    colorStroke(context,this.Color);
 	context.beginPath();
 	context.arc(startPos[0], startPos[1], Math.abs((ev.offsetX - startPos[0])), 0 ,2*Math.PI, false);
 	context.stroke();
@@ -50,7 +68,11 @@ const drawCircle = ((canvas, ev) => {
 const drawFillCircle = ((canvas, ev) => {
 	const startPos = canvas.currentStartPosition;
 	const context = canvas.drawContext;
+    colorStroke(context,this.Color);
 	context.beginPath();
+    context.arc(startPos[0], startPos[1], Math.abs((ev.offsetX - startPos[0])), 0 ,2*Math.PI, false);
+    context.stroke();
+    colorFill(context,this.ColorPour);
 	context.arc(startPos[0], startPos[1], Math.abs((ev.offsetX - startPos[0])), 0 ,2*Math.PI, false);
 	context.fill();
 });
@@ -58,6 +80,7 @@ const drawFill = ((canvas, ev) => {
 	const tasks = [];
 	const context = canvas.drawContext;
 	const data = canvas.canvasData;
+    colorFill(context,this.ColorPour);
 	const startColor = [data[(ev.offsetX + ev.offsetY * 1280) * 4], data[(ev.offsetX + ev.offsetY * 1280) * 4 + 1],   // я бы сделал через splice, но у буфера такого метода нет(
 		data[(ev.offsetX + ev.offsetY * 1280) * 4 + 2], data[(ev.offsetX + ev.offsetY * 1280) * 4 + 3]];
 	const cmpColor = ((x1, y1) => {

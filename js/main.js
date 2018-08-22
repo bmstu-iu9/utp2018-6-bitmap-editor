@@ -26,3 +26,13 @@ function getImage(){
 	window.location.href = image; // it will save locally
 }
 
+document.getElementById('color').oninput = function () {
+    Color = this.value;
+    localStorage.setItem('savedColor', Color);
+}
+
+document.getElementById('colorPour').oninput = function () {
+    ColorPour = this.value;
+    localStorage.setItem('savedColor', ColorPour);
+}
+
