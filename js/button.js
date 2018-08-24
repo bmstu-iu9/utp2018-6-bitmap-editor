@@ -41,9 +41,17 @@ class ToolButton extends Button {
 		this.back.makeSecond();
 		if (this.idElement === 'filler') {
 			this.toggleFiller();
+		} else if (this.idElement === 'text') {
+			this.toggleText();
+		} else {
+			let inp = document.getElementById("inputText");
+			inp.style.borderStyle = 'none';
+			inp.value = " "; 
 		}
 		if (currentButton !== null && currentButton.id === 'filler') {
 			currentButton.toggleFiller();
+		} else if( currentButton !== null && currentButton.id === 'text' ) {
+			currentButton.toggleText();
 		}
 		this.front.drawer = this.drawer;
 	}
@@ -54,5 +62,9 @@ class ToolButton extends Button {
 
 	toggleFiller() {
 		this.front.isFiller = !this.front.isFiller;
+	}
+
+	toggleText() {
+		this.front.isText = !this.front.isText;
 	}
 }

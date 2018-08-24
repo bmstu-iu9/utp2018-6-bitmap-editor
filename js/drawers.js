@@ -95,3 +95,6 @@ const drawFill = ((canvas, ev) => {
 		context.fillRect(left, y, x - left, 1);
 	}
 });
+ const textDraw = (canvas,ev) => {
+	 
+ }
