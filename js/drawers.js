@@ -15,14 +15,6 @@ const parseColor = ((color) => {
 	}
 });
 
-function colorStroke(context, color){
-    context.strokeStyle = color;
-}
-
-function colorFill(context, color){
-    context.fillStyle = color;
-}
-
 const drawPencil = ((canvas, ev) => {
 	const startPos = canvas.currentStartPosition;
 	const context = canvas.drawContext;
@@ -50,13 +42,14 @@ const drawFilledRect = ((canvas, ev) => {
 });
 
 const drawErase = ((canvas, ev) => {
-	const startColor = canvas.color;
-	if (startColor !== '#ffffff') {
-		canvas.color = '#ffffff';
-	}
-	drawPencil(canvas, ev);
-	canvas.color = startColor;
+    const startColor = canvas.colorStroke;
+    if (startColor !== '#ffffff') {
+        canvas.colorStroke = '#ffffff';
+    }
+    drawPencil(canvas, ev);
+    canvas.colorStroke = startColor;
 });
+
 const drawCircle = ((canvas, ev) => {
 	const startPos = canvas.currentStartPosition;
 	const context = canvas.drawContext;
