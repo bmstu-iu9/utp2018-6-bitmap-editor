@@ -20,6 +20,9 @@ tools.forEach((value) => {
 	})
 });
 
+front.colorStroke = back.colorStroke = document.getElementById('color').value;
+back.colorFill = back.colorFill = document.getElementById('colorPour').value;
+
 function getImage(){
 	window.location.href = front.element.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
 }
