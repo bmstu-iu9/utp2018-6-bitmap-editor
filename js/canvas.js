@@ -100,26 +100,13 @@ class Canvas {
 		this.element.style.zIndex = "1";
 	}
 
-	get color() {
-		return this.context.strokeStyle;
-	}
+    set colorStroke(colorStr) {
+        this.context.strokeStyle = colorStr;
+    }
 
-	set color(colorStr) {
-		this.context.strokeStyle = colorStr;
-		this.context.fillStyle = colorStr;
-	}
-
-	setColorHEX(c) {
-		this.color = c;
-	}
-
-	setColorRGB(r, g, b) {
-		this.color = "rgb(" + r + "," + g + "," + b + ")";
-	}
-
-	setColorRGBA(r, g, b, a) {
-		this.color = "rgba(" + r + "," + g + "," + b + "," + a + ")";
-	}
+    set colorFill(colorStr){
+        this.context.fillStyle = colorStr;
+    }
 
 	get canvasData() {
 		return this.context.getImageData(0,0,1280,720).data;

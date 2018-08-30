@@ -27,6 +27,33 @@ header h1 {
     font-weight: bolder;
 }
 
+#color {
+    display: block;
+    margin-left: 25px;
+    margin-top: 10px;
+    padding: 0.2em 0.2em 0.2em 0.2em;
+    box-sizing: border-box;
+    width: 90px;
+    height: 35px;
+    color: #FFFFFF;
+    background-color: #C0C0C0;
+    background: linear-gradient(to bottom right, #C0C0C0, #A9A9A9);
+}
+
+/*оформление кнопки заливки*/
+#colorPour {
+    margin-left: 25px;
+    margin-top: 10px;
+    display: block;
+    padding: 0.2em 0.2em 0.2em 0.2em;
+    box-sizing: border-box;
+    width: 90px;
+    height: 35px;
+    color: #FFFFFF;
+    background-color: #C0C0C0;
+    background: linear-gradient(to bottom right, #C0C0C0, #A9A9A9);
+}
+
 /*Оформление панели инструментов*/
 .panel {
     background: linear-gradient(to bottom, #e3e3e4, #f8f7f7 2%, #f8f7f7 98%, #e3e3e4), #f8f7f7;

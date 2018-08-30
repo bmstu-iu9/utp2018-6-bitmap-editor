@@ -21,7 +21,15 @@ tools.forEach((value) => {
 });
 
 function getImage(){
-	const canv = front.element;
-	var image = canv.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
-	window.location.href = image;
+	window.location.href = front.element.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
 }
+
+document.getElementById('color').oninput = function () {
+	front.colorStroke = this.value;
+	back.colorStroke = this.value;
+};
+
+document.getElementById('colorPour').oninput = function () {
+	front.colorFill = this.value;
+	back.colorFill = this.value;
+};

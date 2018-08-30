@@ -29,29 +29,33 @@ const drawRect = ((canvas, ev) => {
 const drawFilledRect = ((canvas, ev) => {
 	const startPos = canvas.currentStartPosition;
 	const context = canvas.drawContext;
-	context.fillRect(startPos[0], startPos[1], ev.offsetX - startPos[0], ev.offsetY - startPos[1]);
+	context.strokeRect(startPos[0], startPos[1], ev.offsetX - startPos[0], ev.offsetY - startPos[1]); // вокруг прямоугольника обводится контур
+	context.fillRect(startPos[0] + 1, startPos[1] + 1, ev.offsetX - startPos[0] - 1, ev.offsetY - startPos[1] - 1);
 });
 
 const drawErase = ((canvas, ev) => {
-	const startColor = canvas.color;
+	const startColor = canvas.colorStroke;
 	if (startColor !== '#ffffff') {
-		canvas.color = '#ffffff';
+		canvas.colorStroke = '#ffffff';
 	}
 	drawPencil(canvas, ev);
-	canvas.color = startColor;
+	canvas.colorStroke = startColor;
 });
+
 const drawCircle = ((canvas, ev) => {
 	const startPos = canvas.currentStartPosition;
 	const context = canvas.drawContext;
 	context.beginPath();
-	context.arc(startPos[0], startPos[1], Math.abs((ev.offsetX - startPos[0])), 0 ,2*Math.PI, false);
+	context.arc(startPos[0], startPos[1], Math.abs((ev.offsetX - startPos[0])), 0, 2 * Math.PI, false);
 	context.stroke();
 });
 const drawFillCircle = ((canvas, ev) => {
 	const startPos = canvas.currentStartPosition;
 	const context = canvas.drawContext;
 	context.beginPath();
-	context.arc(startPos[0], startPos[1], Math.abs((ev.offsetX - startPos[0])), 0 ,2*Math.PI, false);
+	context.arc(startPos[0], startPos[1], Math.abs((ev.offsetX - startPos[0])), 0, 2 * Math.PI, false);
+	context.stroke();
+	context.arc(startPos[0], startPos[1], Math.abs((ev.offsetX - startPos[0]) - 1), 0, 2 * Math.PI, false);
 	context.fill();
 });
 const drawFill = ((canvas, ev) => {
