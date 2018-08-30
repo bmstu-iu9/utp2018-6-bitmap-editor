@@ -111,11 +111,3 @@ class Canvas {
 		this.filler = v;
 	}
 }
-
-function colorStroke(context, color){
-    context.strokeStyle = color;
-}
-
-function colorFill(context, color){
-    context.fillStyle = color;
-}

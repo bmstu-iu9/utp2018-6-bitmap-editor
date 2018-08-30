@@ -20,19 +20,16 @@ tools.forEach((value) => {
 });
 
 function getImage(){
-	const canv = front.element;
-	// canv.style.backgroundColor = 'red';
-	var image = canv.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
-	window.location.href = image; // it will save locally
+	window.location.href = front.element.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
 }
 
 document.getElementById('color').oninput = function () {
-    Color = this.value;
-    localStorage.setItem('savedColor', Color);
-}
+	front.colorStroke = this.value;
+	back.colorStroke = this.value;
+};
 
 document.getElementById('colorPour').oninput = function () {
-    ColorPour = this.value;
-    localStorage.setItem('savedColor', ColorPour);
-}
+	front.colorFill = this.value;
+	back.colorFill = this.value;
+};
 
