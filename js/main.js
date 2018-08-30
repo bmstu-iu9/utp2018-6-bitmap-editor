@@ -10,6 +10,7 @@ tools.set('filler', new ToolButton('filler',drawFill,front,back));
 tools.set('eraser',new ToolButton('eraser',drawErase,front,back));
 tools.set('circle',new ToolButton('circle',drawCircle,back,front));
 tools.set('filledCircle',new ToolButton('filledCircle',drawFillCircle,back,front));
+tools.set('text',new ToolButton('text',textDraw,front,back));
 let currentTool = tools.get('pencil');
 currentTool.click(null);
 tools.forEach((value) => {
@@ -32,4 +33,3 @@ document.getElementById('colorPour').oninput = function () {
 	front.colorFill = this.value;
 	back.colorFill = this.value;
 };
-

@@ -5,24 +5,50 @@ class Canvas {
 	// frontCanvas - ссылка на "передний" канвас. Нужна, чтобы отрисовывать изменения на него по окончании работы с нижним
 
 	constructor(id, frontCanvas) {
+		document.getElementById('inputText').style.visibility = 'hidden';
 		this.element = document.getElementById(id);
 		this.context = this.element.getContext('2d');
 		this.filler = false;
 		this.frontCanvas = frontCanvas;
+		this.text = false;
+
 		this.element.onclick = (ev => {    // особенное для заливки
 			if (this.filler) {
 				this.drawFunction(this, ev);
+			} else if (this.text) {
+				if(this.text){ 
+					let inp = document.getElementById("inputText");
+					inp.style.cssText = "position: absolute;";
+					inp.style.visibility = '';
+					inp.style.left = ev.clientX + "px";
+					inp.style.top = ev.clientY + "px";
+					inp.id = 'inputText';
+					let offsetX = ev.offsetX;
+					let offsetY = ev.offsetY;
+					inp.style.zIndex = 3;
+					document.body.appendChild(inp);
+					inp.onkeydown = (evee) => {
+						if (evee.keyCode == 13) {
+							this.context.font="20px Georgia";
+							this.context.fillText(inp.value, offsetX, offsetY + 20);
+							inp.style.visibility = 'hidden';
+							inp.value = ' ';
+						}
+					}
+				}
+			} else {
+				
 			}
 		});
 		this.element.onmousedown = (ev => {
-			if (!this.filler) {
+			if (!this.filler && !this.text) {
 				this.clicked = true;
 				this.clickedX = ev.offsetX;
 				this.clickedY = ev.offsetY;
 			}
 		});
 		this.element.onmousemove = (ev => {
-			if (this.clicked && !this.filler) {
+			if (this.clicked && !this.filler && !this.text) {
 				/* очистка, необходимая только для заднего канваса. Нужна в ситуациях типа рисования прямоугольника:
 				   нужно отображать, какой прямоугольник получается и при этом стирать старые изображения
 				 */
@@ -33,7 +59,7 @@ class Canvas {
 			}
 		});
 		this.element.onmouseup = (ev => {
-			if (!this.filler && this.clicked) {
+			if (!this.filler && this.clicked && !this.text) {
 				if (this.frontCanvas !== null) {
 					this.clicked = false;
 					this.context.clearRect(0, 0, this.element.offsetWidth, this.element.offsetHeight);
@@ -46,7 +72,7 @@ class Canvas {
 			}
 		});
 		this.element.onmouseleave = ((ev) => {
-			if (this.clicked && !this.filler) {
+			if (this.clicked && !this.filler && this.text) {
 				this.element.onmouseup(ev);
                 this.clicked = false;
 			}
@@ -109,5 +135,13 @@ class Canvas {
 
 	set isFiller(v) {
 		this.filler = v;
+	}
+
+	get isText() {
+		return this.text;
+	}
+
+	set isText(v) {
+		this.text = v;
 	}
 }
