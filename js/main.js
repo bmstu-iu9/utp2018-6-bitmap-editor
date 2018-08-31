@@ -11,6 +11,9 @@ tools.set('eraser',new ToolButton('eraser',drawErase,front,back));
 tools.set('circle',new ToolButton('circle',drawCircle,back,front));
 tools.set('filledCircle',new ToolButton('filledCircle',drawFillCircle,back,front));
 tools.set('text',new ToolButton('text',textDraw,front,back));
+tools.set('triangle', new ToolButton('triangle', drawTriangle, back, front));
+tools.set('filledTriangle', new ToolButton('filledTriangle', drawFillTriangle, back, front));
+tools.set('straightLine', new ToolButton('straightLine', drawStraightLine, back, front));
 let currentTool = tools.get('pencil');
 currentTool.click(null);
 tools.forEach((value) => {
@@ -38,18 +41,18 @@ thicknessTools.forEach((value) => {
 
 
 front.colorStroke = back.colorStroke = document.getElementById('color').value;
-back.colorFill = back.colorFill = document.getElementById('colorPour').value;
+front.colorFill = back.colorFill = document.getElementById('colorPour').value;
 
 function getImage(){
 	window.location.href = front.element.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
 }
 
-document.getElementById('color').oninput = function () {
+document.getElementById('color').onchange = function () {
 	front.colorStroke = this.value;
 	back.colorStroke = this.value;
 };
 
-document.getElementById('colorPour').oninput = function () {
+document.getElementById('colorPour').onchange = function () {
 	front.colorFill = this.value;
 	back.colorFill = this.value;
 };
