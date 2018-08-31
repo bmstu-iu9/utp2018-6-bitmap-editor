@@ -72,7 +72,7 @@ class Canvas {
 			}
 		});
 		this.element.onmouseleave = ((ev) => {
-			if (this.clicked && !this.filler && this.text) {
+			if (this.clicked && !this.filler && !this.text) {
 				this.element.onmouseup(ev);
                 this.clicked = false;
 			}
