@@ -10,6 +10,10 @@ tools.set('filler', new ToolButton('filler',drawFill,front,back));
 tools.set('eraser',new ToolButton('eraser',drawErase,front,back));
 tools.set('circle',new ToolButton('circle',drawCircle,back,front));
 tools.set('filledCircle',new ToolButton('filledCircle',drawFillCircle,back,front));
+tools.set('text',new ToolButton('text',textDraw,front,back));
+tools.set('triangle', new ToolButton('triangle', drawTriangle, back, front));
+tools.set('filledTriangle', new ToolButton('filledTriangle', drawFillTriangle, back, front));
+tools.set('straightLine', new ToolButton('straightLine', drawStraightLine, back, front));
 let currentTool = tools.get('pencil');
 currentTool.click(null);
 tools.forEach((value) => {
@@ -19,10 +23,19 @@ tools.forEach((value) => {
 	})
 });
 
+front.colorStroke = back.colorStroke = document.getElementById('color').value;
+front.colorFill = back.colorFill = document.getElementById('colorPour').value;
+
 function getImage(){
-	const canv = front.element;
-	// canv.style.backgroundColor = 'red';
-	var image = canv.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
-	window.location.href = image; // it will save locally
+	window.location.href = front.element.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
 }
 
+document.getElementById('color').onchange = function () {
+	front.colorStroke = this.value;
+	back.colorStroke = this.value;
+};
+
+document.getElementById('colorPour').onchange = function () {
+	front.colorFill = this.value;
+	back.colorFill = this.value;
+};

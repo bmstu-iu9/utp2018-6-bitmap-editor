@@ -25,7 +25,7 @@
             <button class="instrument-button" id="filler">
                 <img src="img/icon_bucket.png">
             </button>
-            <button class="instrument-button">
+            <button class="instrument-button" id="text">
                 <img src="img/icon_text.png">
             </button>
         </div>
@@ -41,25 +41,23 @@
             <button class="figure-button" id="circle">
                 <img src="img/icon_circl.png">
             </button>
-            <button class="figure-button">
-                <!-- не картинка-->
+            <button class="figure-button" id="triangle">
+               <img src="img/icon_triangle.png">
             </button>
-            <button class="figure-button">
-                <!-- не картинка-->
+            <button class="figure-button" id="straightLine">
+                <img src="img/icon_straight_line.png">
             </button>
             <button class="figure-button" id="filledRect">
                 <img src="img/icon_filled_rect.png">
             </button>
             <button class="figure-button"  id="filledCircle">
                     <img src="img/icon_fill_circle.jpg">
-
-                <!-- не картинка-->
+            </button>
+            <button class="figure-button" id="filledTriangle">
+                <img src="img/icon_fill_triangle.png">
             </button>
             <button class="figure-button">
-                <!-- не картинка-->
-            </button>
-            <button class="figure-button">
-                <!-- не картинка-->
+			    <!-- не картинка-->
             </button>
         </div>
         <div class="clear"></div>
@@ -71,12 +69,19 @@
     </section>
     <!--для палитры-->
     <section class="tool color">
-        <h2>Цвета</h2>
+        <input list type="color" id="color">
+        <h2>Выберите цвет линии</h2>
+    </section>
+    <!--для выбора заливки-->
+    <section class="tool colorPour">
+        <input list type="color" id="colorPour">
+        <h2>Выберите цвет заливки</h2>
     </section>
     <button onclick="getImage()" class="left">Save </button>
     <div class="clear"></div>
 </div>
 <main>
+    <input type="text" id="inputText">
     <!--Canvas_wrapper для задания отступов-->
     <div class="canvas_wrapper">
         <canvas id="front_canvas" width="1280" height="720">
