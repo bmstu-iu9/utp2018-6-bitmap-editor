@@ -107,9 +107,15 @@ const textDraw = (canvas, ev) => {
 const drawTriangle = ((canvas, ev) => {
     const startPos = canvas.currentStartPosition;
     const context = canvas.drawContext;
-    context.beginPath();
+    context.beginPath(); // Контур треугольника
     context.moveTo(startPos[0], startPos[1]);
     context.lineTo(ev.offsetX, ev.offsetY);
     context.lineTo(ev.offsetX - 2*(ev.offsetX - startPos[0]), ev.offsetY);
+    context.closePath();
+    context.stroke();
+    context.beginPath(); // Заливка треугольника
+    context.moveTo(startPos[0], startPos[1] + 2);
+    context.lineTo(ev.offsetX - 1, ev.offsetY - 1);
+    context.lineTo(ev.offsetX - 2*(ev.offsetX - startPos[0]) + 1, ev.offsetY - 1);
     context.fill();
 });
