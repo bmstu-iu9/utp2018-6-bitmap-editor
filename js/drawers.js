@@ -29,8 +29,8 @@ const drawRect = ((canvas, ev) => {
 const drawFilledRect = ((canvas, ev) => {
     const startPos = canvas.currentStartPosition;
     const context = canvas.drawContext;
+    context.fillRect(startPos[0], startPos[1], ev.offsetX - startPos[0], ev.offsetY - startPos[1]);
     context.strokeRect(startPos[0], startPos[1], ev.offsetX - startPos[0], ev.offsetY - startPos[1]); // вокруг прямоугольника обводится контур
-    context.fillRect(startPos[0] + canvas.lineWidth, startPos[1] + canvas.lineWidth, ev.offsetX - startPos[0] - canvas.lineWidth, ev.offsetY - startPos[1] - canvas.lineWidth);
 });
 
 const drawErase = ((canvas, ev) => {
