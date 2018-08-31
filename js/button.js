@@ -68,3 +68,22 @@ class ToolButton extends Button {
         this.front.isText = !this.front.isText;
     }
 }
+
+class ToolThickness extends Button {
+
+	constructor(id, width, frontCanvas, backCanvas) {
+		super(id);
+		this.front = frontCanvas;
+		this.back = backCanvas;
+		this.width = width;
+	}
+
+	click(currentButton) {
+		if (currentButton !== null) {
+			currentButton.notfocus();
+		}
+		this.focus();
+		this.front.lineWidth = this.width;
+		this.back.lineWidth = this.width;
+	}
+}
