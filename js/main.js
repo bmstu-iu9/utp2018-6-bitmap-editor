@@ -13,6 +13,7 @@ tools.set('filledCircle',new ToolButton('filledCircle',drawFillCircle,back,front
 tools.set('text',new ToolButton('text',textDraw,front,back));
 tools.set('triangle', new ToolButton('triangle', drawTriangle, back, front));
 tools.set('filledTriangle', new ToolButton('filledTriangle', drawFillTriangle, back, front));
+tools.set('straightLine', new ToolButton('straightLine', drawStraightLine, back, front));
 let currentTool = tools.get('pencil');
 currentTool.click(null);
 tools.forEach((value) => {

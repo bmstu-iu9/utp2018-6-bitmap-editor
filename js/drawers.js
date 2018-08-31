@@ -125,3 +125,20 @@ const drawFillTriangle = ((canvas, ev) => {
     context.lineTo(ev.offsetX - 2*(ev.offsetX - startPos[0]) + 1, ev.offsetY - 1);
     context.fill();
 });
+
+const drawStraightLine = ((canvas, ev) => {
+    const startPos = canvas.currentStartPosition;
+    const context = canvas.drawContext;
+    context.beginPath();
+    context.moveTo(startPos[0], startPos[1]);
+	if (ev.shiftKey){
+		if (Math.abs(ev.offsetX - startPos[0]) < Math.abs(ev.offsetY - startPos[1])) {
+			context.lineTo(startPos[0], ev.offsetY);
+		} else {
+			context.lineTo(ev.offsetX, startPos[1]);
+		}
+	} else {
+		context.lineTo(ev.offsetX, ev.offsetY);
+	}
+    context.stroke();
+});
