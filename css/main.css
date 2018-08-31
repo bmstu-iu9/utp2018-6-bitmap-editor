@@ -1,32 +1,36 @@
 /* Стили панели интерфейса: панель инструментов, кнопки и тд */
-
-html {
-    font: 14px Arial;
+ 
+html {                                                      
+font: 14px Arial;
     height: 100%;
 }
-
-body {
-    height: 100%;
+ 
+body {                                                            
+height: 100%;
     background-color: #E3F2FD;
 }
-
+ 
 /*Оформление шапки*/
 header {
     padding: 6px;
     background-color: #FFFFFF;
     text-align: center;
 }
-
+ 
 main {
     position: relative;
 }
-
+ 
 header h1 {
     font-size: 1.2em;
     color: #424242;
     font-weight: bolder;
 }
-
+ 
+section {
+    height: 100%;
+}
+ 
 #color {
     display: block;
     margin-left: 25px;
@@ -39,7 +43,7 @@ header h1 {
     background-color: #C0C0C0;
     background: linear-gradient(to bottom right, #C0C0C0, #A9A9A9);
 }
-
+ 
 /*оформление кнопки заливки*/
 #colorPour {
     margin-left: 25px;
@@ -53,7 +57,7 @@ header h1 {
     background-color: #C0C0C0;
     background: linear-gradient(to bottom right, #C0C0C0, #A9A9A9);
 }
-
+ 
 /*Оформление панели инструментов*/
 .panel {
     background: linear-gradient(to bottom, #e3e3e4, #f8f7f7 2%, #f8f7f7 98%, #e3e3e4), #f8f7f7;
@@ -61,13 +65,13 @@ header h1 {
     border-left: none;
     border-right: none;
 }
-
+ 
 .tool {
     float: left;
     padding: 10px 10px 2px 10px;
     position: relative;
 }
-
+ 
 .tool::after, .tool:first-child::before {
     content: '';
     display: block;
@@ -77,31 +81,31 @@ header h1 {
     position: absolute;
     top: 20%;
 }
-
+ 
 .tool::after {
     right: 0;
 }
-
+ 
 .tool:first-child::before {
     left: 0;
 }
-
+ 
 .tool:first-child {
     margin-left: 12px;
 }
-
+ 
 .tool h2 {
     color: #757575;
     text-align: center;
     display: block;
 }
-
+ 
 /*Оформление каждой секции инструментов*/
-
+ 
 .instruments {
     width: 200px;
 }
-
+ 
 .instrument-button, .figure-button {
     display: block;
     padding: 0;
@@ -115,38 +119,92 @@ header h1 {
     background-color: #f8f7f7;
     box-sizing: border-box;
 }
+ 
+.thickness-button {
+    text-decoration: none;
+    outline: none;
+    border: none;
+    background-color: #f8f7f7;
+    box-sizing: border-box;    
+}
 
-.instrument-button:hover, .figure-button:hover {
+
+ 
+.instrument-button:hover, .figure-button:hover, .thickness-button:hover {
     border: 1px solid #90CAF9;
     background-color: #E3F2FD;
 }
-
+ 
 .instrument-button img, .figure-button img {
     width: 48px;
     height: 48px;
     padding: 0;
     margin: 0;
 }
-
+ 
 .figures {
     width: 100px;
 }
-
+ 
 .figure-button {
     width: 24px;
     height: 24px;
 }
-
+ 
 .figure-button img {
     width: 22px;
     height: 22px;
 }
-
+ 
 .focused-button {
     border: 1px solid #64B5F6;
     background-color: #BBDEFB;
 }
-
+ 
+section.thickness{
+    display: flex;
+    flex-direction: column;
+    /*justify-items: center;*/
+    /*justify-content: center;*/
+    align-content: center;
+    align-items: center;
+ 
+    width: 140px;
+}
+ 
+.thickness button:first-child {
+    margin-top: auto;
+}
+ 
+.thickness button {
+    height: 12px;
+    width: 100px;
+}
+ 
+.px1, .px2, .px3, .px4 {
+    width: 80px;
+}
+ 
+.px1 {
+    height: 1px;
+    background-color: #000000;
+}
+ 
+.px2 {
+    height: 2px;
+    background-color: #000000;
+}
+ 
+.px3 {
+    height: 3px;
+    background-color: #000000;
+}
+ 
+.px4 {
+    height: 4px;
+    background-color: #000000;
+}
+ 
 /*Оформление канвасов*/
 .canvas_wrapper {
     width: 1280px;
@@ -157,23 +215,23 @@ header h1 {
     box-shadow: 6px 6px 10px -2px #B0BEC5;
     border: 1px solid #ECEFF1;
 }
-
+ 
 main canvas {
     position: absolute;
     top: 0;
     left: 0;
 }
-
+ 
 #back_canvas {
     color: transparent;
 }
-
+ 
 .clear {
     clear: both;
     width: 0;
     height: 0;
 }
-
+ 
 .left {
     float: right;
     margin: 10px;
@@ -186,3 +244,7 @@ main canvas {
 .left:active{
     margin: 10px;
 }
+
+
+
+

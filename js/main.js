@@ -20,6 +20,23 @@ tools.forEach((value) => {
 	})
 });
 
+const thicknessTools = new Map();
+ 
+thicknessTools.set('1px', new ToolThickness('1px', 1, front, back));
+thicknessTools.set('2px', new ToolThickness('2px', 2, front, back));
+thicknessTools.set('3px', new ToolThickness('3px', 3, front, back));
+thicknessTools.set('4px', new ToolThickness('4px', 4, front, back));
+ 
+let currentWidth = thicknessTools.get('1px');
+currentWidth.click(null);
+thicknessTools.forEach((value) => {
+    value.docElement.onclick = (() => {
+        value.click(currentWidth);
+        currentWidth = value;
+    })
+});
+
+
 front.colorStroke = back.colorStroke = document.getElementById('color').value;
 back.colorFill = back.colorFill = document.getElementById('colorPour').value;
 
