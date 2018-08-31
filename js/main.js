@@ -24,18 +24,18 @@ tools.forEach((value) => {
 });
 
 front.colorStroke = back.colorStroke = document.getElementById('color').value;
-back.colorFill = back.colorFill = document.getElementById('colorPour').value;
+front.colorFill = back.colorFill = document.getElementById('colorPour').value;
 
 function getImage(){
 	window.location.href = front.element.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
 }
 
-document.getElementById('color').oninput = function () {
+document.getElementById('color').onselect = function () {
 	front.colorStroke = this.value;
 	back.colorStroke = this.value;
 };
 
-document.getElementById('colorPour').oninput = function () {
+document.getElementById('colorPour').onselect = function () {
 	front.colorFill = this.value;
 	back.colorFill = this.value;
 };
