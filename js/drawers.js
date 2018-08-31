@@ -30,7 +30,7 @@ const drawFilledRect = ((canvas, ev) => {
     const startPos = canvas.currentStartPosition;
     const context = canvas.drawContext;
     context.strokeRect(startPos[0], startPos[1], ev.offsetX - startPos[0], ev.offsetY - startPos[1]); // вокруг прямоугольника обводится контур
-    context.fillRect(startPos[0] + 1, startPos[1] + 1, ev.offsetX - startPos[0] - 1, ev.offsetY - startPos[1] - 1);
+    context.fillRect(startPos[0] + canvas.lineWidth, startPos[1] + canvas.lineWidth, ev.offsetX - startPos[0] - canvas.lineWidth, ev.offsetY - startPos[1] - canvas.lineWidth);
 });
 
 const drawErase = ((canvas, ev) => {
@@ -55,7 +55,7 @@ const drawFillCircle = ((canvas, ev) => {
     context.beginPath();
     context.arc(startPos[0], startPos[1], Math.abs((ev.offsetX - startPos[0])), 0, 2 * Math.PI, false);
     context.stroke();
-    context.arc(startPos[0], startPos[1], Math.abs((ev.offsetX - startPos[0]) - 1), 0, 2 * Math.PI, false);
+    context.arc(startPos[0], startPos[1], Math.abs((ev.offsetX - startPos[0]) - canvas.lineWidth), 0, 2 * Math.PI, false);
     context.fill();
 });
 const drawFill = ((canvas, ev) => {
@@ -118,12 +118,12 @@ const drawTriangle = ((canvas, ev) => {
 const drawFillTriangle = ((canvas, ev) => {
     const startPos = canvas.currentStartPosition;
     const context = canvas.drawContext;
-	drawTriangle(canvas, ev);
     context.beginPath(); // Заливка треугольника
     context.moveTo(startPos[0], startPos[1] + 2);
     context.lineTo(ev.offsetX - 1, ev.offsetY - 1);
     context.lineTo(ev.offsetX - 2*(ev.offsetX - startPos[0]) + 1, ev.offsetY - 1);
     context.fill();
+	drawTriangle(canvas, ev);
 });
 
 const drawStraightLine = ((canvas, ev) => {

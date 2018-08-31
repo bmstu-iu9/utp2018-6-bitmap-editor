@@ -116,6 +116,10 @@ class Canvas {
 		this.context.lineWidth = w;
 	}
 
+	get lineWidth() {
+		return this.context.lineWidth;
+	}
+
 	get currentStartPosition() {
 		return [this.clickedX, this.clickedY];
 	}
