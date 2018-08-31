@@ -113,6 +113,12 @@ const drawTriangle = ((canvas, ev) => {
     context.lineTo(ev.offsetX - 2*(ev.offsetX - startPos[0]), ev.offsetY);
     context.closePath();
     context.stroke();
+});
+
+const drawFillTriangle = ((canvas, ev) => {
+    const startPos = canvas.currentStartPosition;
+    const context = canvas.drawContext;
+	drawTriangle(canvas, ev);
     context.beginPath(); // Заливка треугольника
     context.moveTo(startPos[0], startPos[1] + 2);
     context.lineTo(ev.offsetX - 1, ev.offsetY - 1);
