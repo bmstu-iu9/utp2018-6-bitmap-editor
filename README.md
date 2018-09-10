@@ -18,12 +18,12 @@
 * `Сохранение изображения`
 
 ## Состав команды
-[Олег Шатнюк](https://github.com/hinch5)
+Олег Шатнюк - [@hinch5](https://github.com/hinch5)
 
-[Стас Санталов](https://github.com/Santalov)
+Стас Санталов - [@Santalov](https://github.com/Santalov)
 
-[Александр Боровик](https://github.com/aktx)
+Александр Боровик - [@aktx](https://github.com/aktx)
 
-[Александр Лобачев](https://github.com/Cherepashka76rus)
+Александр Лобачев - [@Cherepashka76rus](https://github.com/Cherepashka76rus)
 
-[Артем Егорычев](https://github.com/Pro100Tema)
+Артем Егорычев - [@Pro100Tema](https://github.com/Pro100Tema)
